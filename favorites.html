@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>RAWG 2025 Game Test</title>
+  <meta charset="UTF-8" />
+  <title>Favorite Games</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,19 +13,15 @@
       <a href="#">About</a>
       <a href="#">Contact</a>
     </div>
-    <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Search for a game...">
-    </div>
   </nav>
 
-  <h1 style="text-align: center;">50 Most Recent Games Released in 2025</h1>
+  <h1 style="text-align: center;">Your Favorite Games</h1>
   <div id="games"></div>
 
-  <!-- Add this line to load shared.js before logic.js -->
   <script src="shared.js"></script>
-  <script src="logic.js"></script>
+  <script>
+    const favorites = getFavorites();
+    displayGames(favorites, true); // true = viewingFavorites
+  </script>
 </body>
 </html>
-
-
-
