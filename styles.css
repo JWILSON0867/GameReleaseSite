@@ -60,3 +60,9 @@ nav {
   transition: color 0.3s;
   cursor: pointer;
 }
+
+.release-time {
+  font-size: 0.9rem;
+  color: #cccccc;
+  margin-bottom: 0.5rem;
+}
