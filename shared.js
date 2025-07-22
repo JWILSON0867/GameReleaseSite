@@ -1,12 +1,23 @@
+// Reference to main container where games will be displayed
+
 const gamesContainer = document.getElementById('games');
+
+/**
+ * Retrieve favorite games from localStorage.
+ * Returns an array of favorite game objects, empty array if none are saved.
+ */
 
 function getFavorites() {
   return JSON.parse(localStorage.getItem('favorites')) || [];
 }
 
+// Save the current list of favorite games to localStorage.
+
 function saveFavorites(favorites) {
   localStorage.setItem('favorites', JSON.stringify(favorites));
 }
+
+// Removes or adds to favorite list
 
 function toggleFavorite(game) {
   let favorites = getFavorites();
@@ -18,6 +29,8 @@ function toggleFavorite(game) {
   }
   saveFavorites(favorites);
 }
+
+// Calculate how much time has passed since the game's release.
 
 function getTimeSinceRelease(releasedDate, currentDate) {
   if (isNaN(releasedDate)) return 'Release date unknown';
@@ -71,9 +84,9 @@ function displayGames(games, viewingFavorites = false) {
     div.querySelector('.star').addEventListener('click', () => {
       toggleFavorite(game);
       if (viewingFavorites) {
-        displayGames(getFavorites(), true); // Refresh on unstar
+        displayGames(getFavorites(), true); 
       } else {
-        displayGames(currentGames); // From main page
+        displayGames(currentGames); 
       }
     });
 
