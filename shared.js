@@ -90,6 +90,14 @@ function displayGames(games, viewingFavorites = false) {
       }
     });
 
+    const img = div.querySelector('img');
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      localStorage.setItem('selectedGameId', game.id);
+      window.location.href = 'game-details.html';
+    });
+
     gamesContainer.appendChild(div);
   });
+
 }
