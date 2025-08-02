@@ -50,12 +50,19 @@ function getTimeSinceRelease(releasedDate, currentDate) {
   return `Released ${diffYears} ${diffYears === 1 ? 'year' : 'years'} ago`;
 }
 
+// Display Games takes an array of javascript objects
+
 function displayGames(games, viewingFavorites = false) {
+
+  // Clears div container
+  
   gamesContainer.innerHTML = '';
   const favorites = getFavorites();
 
+  // Loop through array of Game objects
+
   games.forEach(game => {
-    const isFavorite = favorites.some(fav => fav.id === game.id);
+    const isFavorite = favorites.some(fav => fav.id === game.id); // Boolean value, .some() "does at least 1 in the array meet the condition", fav is current instance checks if id field is the same
     const div = document.createElement('div');
     div.classList.add('game');
 
@@ -68,18 +75,25 @@ function displayGames(games, viewingFavorites = false) {
     `;
     */
 
+    //Get Time passed sinced Game release
+
     const releaseDate = new Date(game.released);
     const today = new Date();
     const timeSinceRelease = getTimeSinceRelease(releaseDate, today);
 
+    // Create div element
+    //ternary operator, {isFavorite ? 'gold' : 'gray'}, if found to be in favorites turn star gold
+
     div.innerHTML = `
       <h3>
         ${game.name}
-        <span class="star" style="color: ${isFavorite ? 'gold' : 'gray'};">★</span>
+        <span class="star" style="color: ${isFavorite ? 'gold' : 'gray'};">★</span> 
       </h3>
       <p class="release-time">${timeSinceRelease}</p>
       <img src="${game.background_image}" alt="${game.name}">
 `;
+
+// When star is clicked if on favorites page will remove entry automatically as page refreshes
 
     div.querySelector('.star').addEventListener('click', () => {
       toggleFavorite(game);
