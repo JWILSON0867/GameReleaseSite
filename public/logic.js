@@ -1,7 +1,8 @@
 // RAWG API key and base URL setup
 
-const apiKey = '8501748fdf5149b7847749320e8162c1';
-const baseUrl = 'https://api.rawg.io/api/games';
+//const apiKey = '8501748fdf5149b7847749320e8162c1';
+const baseUrl = '/api/games'
+//const baseUrl = 'https://api.rawg.io/api/games';
 
 // Get current year to fetch games from that year
 
@@ -21,7 +22,7 @@ let currentGames = [];
  */
 
 function fetchRecentGames() {
-  fetch(`${baseUrl}?dates=${year}-01-01,${year}-12-31&ordering=-released&page_size=50&key=${apiKey}`)
+  fetch(`${baseUrl}?dates=${year}-01-01,${year}-12-31&ordering=-released&page_size=50`)
     .then(res => res.json())
     .then(data => {
       currentGames = data.results;
@@ -33,7 +34,7 @@ function fetchRecentGames() {
 // Search for games based on user query 
 
 function searchGames(query) {
-  fetch(`${baseUrl}?search=${encodeURIComponent(query)}&page_size=20&key=${apiKey}`)
+  fetch(`${baseUrl}?search=${encodeURIComponent(query)}&page_size=20`)
     .then(res => res.json())
     .then(data => {
       currentGames = data.results;
